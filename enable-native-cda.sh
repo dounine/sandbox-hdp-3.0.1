@@ -28,14 +28,14 @@ if [ "$flavor" = "hdf" ]; then
  name="$hdpSandbox"
  sed 's/hdpEnabled=false/hdpEnabled=true/g' assets/generate-proxy-deploy-script.sh > assets/generate-proxy-deploy-script.sh.new
  mv -f assets/generate-proxy-deploy-script.sh.new assets/generate-proxy-deploy-script.sh
- hostname="cc.com"
+ hostname="sandbox-hdp.hortonworks.com"
 elif [ "$flavor" = "hdp" ]; then
  # we have an hdp sandbox running so we need to download and start the hdp coutnerpart
  version="$hdfVersion"
  name="$hdfSandbox"
  sed 's/hdfEnabled=false/hdfEnabled=true/g' assets/generate-proxy-deploy-script.sh > assets/generate-proxy-deploy-script.sh.new
  mv -f assets/generate-proxy-deploy-script.sh.new assets/generate-proxy-deploy-script.sh
- hostname="cc1.com"
+ hostname="sandbox-hdf.hortonworks.com"
 fi
 
 docker pull "$registry/$name:$version"
@@ -63,4 +63,4 @@ chmod +x sandbox/proxy/proxy-deploy.sh 2>/dev/null
 sandbox/proxy/proxy-deploy.sh 
 
 #add the hostname to localhost
-echo "You need to add  'cc.com' and 'cc1.com' into your hosts file"
+echo "You need to add  'sandbox-hdp.hortonworks.com' and 'sandbox-hdf.hortonworks.com' into your hosts file"

@@ -26,9 +26,9 @@ docker pull "$registry/$proxyName:$proxyVersion"
 
 # start the docker container and proxy
 if [ "$flavor" == "hdf" ]; then
- hostname="cc1.com"
+ hostname="sandbox-hdf.hortonworks.com"
 elif [ "$flavor" == "hdp" ]; then
- hostname="cc.com"
+ hostname="sandbox-hdp.hortonworks.com"
 fi
 
 version=$(docker images | grep hortonworks/$name  | awk '{print $2}');
